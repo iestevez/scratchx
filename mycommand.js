@@ -12,7 +12,7 @@
         // Code that gets executed when the block is run
     };
 
-ext.send_to_google = function() {
+ ext.send_to_google = function(nombre,tiempo) {
         // Code that gets executed when the block is run
         var xhttp;
 if (window.XMLHttpRequest) {
@@ -22,7 +22,7 @@ if (window.XMLHttpRequest) {
     xhttp = new ActiveXObject("Microsoft.XMLHTTP");
 }
 var url="https://script.google.com/macros/s/AKfycbyvVMtRVnnuASUJQJ2rUcPD6Twms_oBuYQ1Oc5GAcEELnb5HHa2/exec"
-xhttp.open("GET", url+"?nombre=pepe&tiempo=0.0", true);
+xhttp.open("GET", url+"?nombre="+nombre+"&tiempo="+tiempo, true);
 xhttp.send();
         
     };
@@ -32,7 +32,8 @@ xhttp.send();
         blocks: [
             // Block type, block name, function name
             [' ', 'my first block', 'my_first_block'],
-            [' ', 'Enviar datos a hoja de cálculo', 'send_to_google'],
+            [' ', 'Enviar nombre %s y tiempo %n a hoja de cálculo', 'send_to_google','default',0],
+            
         ]
     };
 
